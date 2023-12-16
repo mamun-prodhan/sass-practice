@@ -1,0 +1,52 @@
+@forward "./base/index";
+@use "./util/index" as variable;
+
+@mixin para-style($size, $style) {
+  font-size: $size;
+  text-align: $style;
+  margin: 10px 0;
+}
+@mixin setFontSize($value) {
+  @if $value == small {
+    font-size: 12px;
+  } @else if $value == medium {
+    font-size: 16px;
+  } @else if $value == large {
+    font-size: 20px;
+  } @else {
+    font-size: none;
+  }
+}
+
+.btn {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  cursor: pointer;
+  margin: 20px 0;
+}
+.btn-download {
+  @extend .btn;
+  background-color: rgb(255, 56, 56);
+  @include setFontSize(medium);
+}
+.learn-more {
+  @extend .btn;
+  background-color: cornflowerblue;
+  @include setFontSize(medium);
+}
+
+header {
+  background-color: variable.$header_bg;
+  padding: 1rem;
+}
+#about p {
+  @include para-style(20px, left);
+}
+#education p {
+  @include para-style(20px, right);
+}
+main {
+  background-color: variable.$main_bg;
+  padding: 1rem;
+}
